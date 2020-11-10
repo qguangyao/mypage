@@ -7,6 +7,7 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
+  hash: true,
   routes: [
     { path: '/', redirect: '/toy/worktime' },
     { path: '/toy', redirect: '/toy/worktime' },

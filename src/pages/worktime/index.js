@@ -66,7 +66,9 @@ export default () => {
       else if (positionTime >= pmEndTime) pastDay++;
     }
     // console.log('todayTotal:', todayTotal)
-    var p = ((pastDay * dayTotal + todayTotal) / total) * 100;
+    var p = 0;
+    if (total === 0) p = 100;
+    else p = ((pastDay * dayTotal + todayTotal) / total) * 100;
     // console.log('persent:', p)
     setPersent(p.toFixed(2) + '');
   };
