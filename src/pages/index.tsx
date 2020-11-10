@@ -59,7 +59,7 @@ export default (props: any) => {
                 <Menu.Item key="8">简介</Menu.Item>
                 <Menu.Item key="9">
                   <a
-                    href="https://github.com/qguangyao"
+                    href="https://github.com/qguangyaonpm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
