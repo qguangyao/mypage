@@ -4,15 +4,16 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  history: {
+    type: 'hash',
+  },
   routes: [
     { path: '/', redirect: '/toy/worktime' },
     { path: '/toy', redirect: '/toy/worktime' },
     {
-      path: '/toy', component: '@/pages/index',
-      routes: [
-        { path: '/toy/worktime', component: '@/pages/worktime/index' },
-      ]
-
+      path: '/toy',
+      component: '@/pages/index',
+      routes: [{ path: '/toy/worktime', component: '@/pages/worktime/index' }],
     },
   ],
 });
