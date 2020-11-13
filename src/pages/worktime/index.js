@@ -6,12 +6,6 @@ const CheckboxGroup = Checkbox.Group;
 const format = 'HH:mm:ss';
 const { Text, Link } = Typography;
 
-const timeBoundary = {
-  amStart: time,
-  amEnd: time,
-  pmStart: time,
-  pmEnd: time,
-};
 const checkList = [
   '星期一',
   '星期二',
@@ -28,12 +22,16 @@ const amE = '12:00:00';
 const pmS = '13:00:00';
 const pmE = '18:00:00';
 
+const defaultTimeBoundary = {
+  amStart: moment(amS, format),
+  amEnd: moment(amE, format),
+  pmStart: moment(pmS, format),
+  pmEnd: moment(pmE, format),
+}
+
 export default () => {
-  const [tb, setState] = useState(timeBoundary);
-  tb.amStart = moment(amS, format);
-  tb.amEnd = moment(amE, format);
-  tb.pmStart = moment(pmS, format);
-  tb.pmEnd = moment(pmE, format);
+  const [tb, setState] = useState(defaultTimeBoundary);
+
   const cal = () => {
     const now = new Date();
     const position = now.getDay() - 1;
@@ -130,14 +128,14 @@ export default () => {
         <Text>开始：</Text>
         <TimePicker
           onChange={(time, timeString) => onchange(time, timeString, 0)}
-          defaultValue={tb.amStart}
+          defaultValue={defaultTimeBoundary.amStart}
           format={format}
         />
         <Divider type={'vertical'} />
         <Text>结束：</Text>
         <TimePicker
           onChange={(time, timeString) => onchange(time, timeString, 1)}
-          defaultValue={tb.amEnd}
+          defaultValue={defaultTimeBoundary.amEnd}
           format={format}
         />
         <Divider />
@@ -148,14 +146,14 @@ export default () => {
         <Text>开始：</Text>
         <TimePicker
           onChange={(time, timeString) => onchange(time, timeString, 2)}
-          defaultValue={tb.pmStart}
+          defaultValue={defaultTimeBoundary.pmStart}
           format={format}
         />
         <Divider type={'vertical'} />
         <Text>结束：</Text>
         <TimePicker
           onChange={(time, timeString) => onchange(time, timeString, 3)}
-          defaultValue={tb.pmEnd}
+          defaultValue={defaultTimeBoundary.pmEnd}
           format={format}
         />
         <Divider />
