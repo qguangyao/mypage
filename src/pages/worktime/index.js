@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Typography, Space, TimePicker, Button, Divider } from 'antd';
+import { message, Checkbox, Typography, Space, TimePicker, Button, Divider } from 'antd';
 import moment, { time } from 'moment';
 import Styles from './index.css';
 const CheckboxGroup = Checkbox.Group;
@@ -43,10 +43,25 @@ export default () => {
       calList.push(index);
       if (position > index) pastDay++;
     });
+    if (!tb.amStart
+      || !tb.amEnd
+      || !tb.pmStart
+      || !tb.pmEnd) {
+      message.error("您的工作时间填错啦");
+      return;
+    }
     const amStartTime = tb.amStart.toDate().getTime();
     const amEndTime = tb.amEnd.toDate().getTime();
     const pmStartTime = tb.pmStart.toDate().getTime();
     const pmEndTime = tb.pmEnd.toDate().getTime();
+    if (amStartTime > amEndTime
+      || amEndTime > pmStartTime
+      || pmStartTime > pmEndTime
+
+    ) {
+      message.error("您的工作时间填错啦");
+      return;
+    }
     const amTotal = amEndTime - amStartTime;
     const pmTotal = pmEndTime - pmStartTime;
     const dayTotal = amTotal + pmTotal;
