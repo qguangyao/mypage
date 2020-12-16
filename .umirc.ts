@@ -16,5 +16,13 @@ export default defineConfig({
       component: '@/pages/index',
       routes: [{ path: '/toy/worktime', component: '@/pages/worktime/index' }],
     },
+    {
+      path: '/useful',
+      component: '@/pages/index',
+      routes: [
+        { path: '/useful', redirect: '/useful/varificationCode' },
+        { path: '/useful/varificationCode', component: '@/pages/varificationCode/index' },
+      ],
+    },
   ],
 });

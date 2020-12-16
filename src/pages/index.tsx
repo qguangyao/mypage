@@ -21,9 +21,9 @@ export default (props: any) => {
       >
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">百货</Menu.Item>
+          <Menu.Item key="1"><Link to="/toy">百货</Link></Menu.Item>
           <Menu.Item key="2">笔记</Menu.Item>
-          <Menu.Item key="3">有用的</Menu.Item>
+          <Menu.Item key="3"><Link to="/useful">有用的</Link></Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: '0 10px' }}>
@@ -51,8 +51,11 @@ export default (props: any) => {
               <SubMenu key="sub2" icon={<LaptopOutlined />} title="工具">
                 <Menu.Item key="5">计算器</Menu.Item>
               </SubMenu>
+              <SubMenu key="sub3" icon={<LaptopOutlined />} title="组件">
+                <Menu.Item key="5"><Link to="/useful/varificationCode">图形验证码</Link></Menu.Item>
+              </SubMenu>
               <SubMenu
-                key="sub3"
+                key="sub4"
                 icon={<NotificationOutlined />}
                 title="关于我"
               >
